@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:flutter_redux_demo/screens/redux_demo/counter_state.dart';
-import 'package:flutter_redux_demo/screens/redux_demo/counter_state_model.dart';
-import 'package:flutter_redux_demo/screens/redux_demo/redux_second_page.dart';
+import 'package:flutter_redux_demo/screens/redux_counter_demo/actions/actions.dart';
+import 'package:flutter_redux_demo/screens/redux_counter_demo/screens/redux_second_page.dart';
+import 'package:flutter_redux_demo/screens/redux_counter_demo/store/app_state.dart';
 
 class ReduxHomePage extends StatefulWidget {
   const ReduxHomePage({super.key});
@@ -37,9 +37,9 @@ class _ReduxHomePageState extends State<ReduxHomePage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              StoreConnector<CounterStateModel, VoidCallback>(
+              StoreConnector<AppState, VoidCallback>(
                 converter: (store) {
-                  return () => store.dispatch(CounterActions.decrement);
+                  return () => store.dispatch(DecrementAction());
                 },
                 builder: (context, callback) {
                   return FloatingActionButton(
@@ -50,9 +50,9 @@ class _ReduxHomePageState extends State<ReduxHomePage> {
                   );
                 },
               ),
-              StoreConnector<CounterStateModel, VoidCallback>(
+              StoreConnector<AppState, VoidCallback>(
                 converter: (store) {
-                  return () => store.dispatch(CounterActions.reset);
+                  return () => store.dispatch(ResetAction());
                 },
                 builder: (context, callback) {
                   return FloatingActionButton(
@@ -63,9 +63,9 @@ class _ReduxHomePageState extends State<ReduxHomePage> {
                   );
                 },
               ),
-              StoreConnector<CounterStateModel, VoidCallback>(
+              StoreConnector<AppState, VoidCallback>(
                 converter: (store) {
-                  return () => store.dispatch(CounterActions.increment);
+                  return () => store.dispatch(IncrementAction());
                 },
                 builder: (context, callback) {
                   return FloatingActionButton(
@@ -79,24 +79,24 @@ class _ReduxHomePageState extends State<ReduxHomePage> {
             ],
           ),
           const SizedBox(height: 12),
-          StoreConnector<CounterStateModel, String>(
-            converter: (store) => store.state.count.toString(),
+          StoreConnector<AppState, String>(
+            converter: (store) => store.state.counterState.count.toString(),
             builder: (context, count) {
               return Center(
                 child: Text("Count: $count."),
               );
             },
           ),
-          StoreConnector<CounterStateModel, String>(
-            converter: (store) => store.state.totalActions.toString(),
+          StoreConnector<AppState, String>(
+            converter: (store) => store.state.counterState.totalActions.toString(),
             builder: (context, totalActions) {
               return Center(
                 child: Text("Total actions: $totalActions."),
               );
             },
           ),
-          StoreConnector<CounterStateModel, String>(
-            converter: (store) => store.state.lastActionPerformed.toString(),
+          StoreConnector<AppState, String>(
+            converter: (store) => store.state.counterState.lastActionPerformed.toString(),
             builder: (context, lastActionPerformed) {
               return Center(
                 child: Text("Last action performed: $lastActionPerformed."),

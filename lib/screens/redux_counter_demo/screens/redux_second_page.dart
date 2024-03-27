@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:flutter_redux_demo/screens/redux_demo/counter_state_model.dart';
+import 'package:flutter_redux_demo/screens/redux_counter_demo/store/app_state.dart';
 
 class ReduxSecondPage extends StatefulWidget {
   const ReduxSecondPage({super.key});
@@ -25,8 +25,8 @@ class _ReduxSecondPageState extends State<ReduxSecondPage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          StoreConnector<CounterStateModel, String>(
-            converter: (store) => store.state.count.toString(),
+          StoreConnector<AppState, String>(
+            converter: (store) => store.state.counterState.count.toString(),
             builder: (context, count) {
               return Center(
                 child: Text(
@@ -36,8 +36,8 @@ class _ReduxSecondPageState extends State<ReduxSecondPage> {
               );
             },
           ),
-          StoreConnector<CounterStateModel, String>(
-            converter: (store) => store.state.totalActions.toString(),
+          StoreConnector<AppState, String>(
+            converter: (store) => store.state.counterState.totalActions.toString(),
             builder: (context, totalActions) {
               return Center(
                 child: Text(
@@ -47,8 +47,8 @@ class _ReduxSecondPageState extends State<ReduxSecondPage> {
               );
             },
           ),
-          StoreConnector<CounterStateModel, String>(
-            converter: (store) => store.state.lastActionPerformed.toString(),
+          StoreConnector<AppState, String>(
+            converter: (store) => store.state.counterState.lastActionPerformed.toString(),
             builder: (context, lastActionPerformed) {
               return Center(
                 child: Text(
