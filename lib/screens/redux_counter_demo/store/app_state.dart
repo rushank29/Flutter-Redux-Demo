@@ -1,4 +1,4 @@
-import 'package:flutter_redux_demo/screens/redux_counter_demo/reducer/counter_state_reducer.dart';
+import 'package:flutter_redux_demo/screens/redux_counter_demo/reducer/app_reducer.dart';
 import '../model/counter_state.dart';
 
 class AppState {

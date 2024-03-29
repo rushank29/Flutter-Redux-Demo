@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:flutter_redux_demo/screens/redux_counter_demo/model/counter_state.dart';
-import 'package:flutter_redux_demo/screens/redux_counter_demo/reducer/counter_state_reducer.dart';
+import 'package:flutter_redux_demo/screens/redux_counter_demo/reducer/app_reducer.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_persist/redux_persist.dart';
